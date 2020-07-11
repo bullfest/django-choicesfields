@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "django-choicefields"
+version = "0.1.0"
+description = "Django field for modern choices"
+authors = ["Alexander Viklund <bullfest@sthlm.dev>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+django = ">= 3.0.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+pytest-django = "*"
+black = "^19.10b0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0a5"]
+build-backend = "poetry.core.masonry.api"

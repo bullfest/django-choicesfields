@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-choicesfields"
-version = "0.1.0"
+version = "0.1.1"
 description = "Django fields for modern choices"
 authors = ["Alexander Viklund <bullfest@sthlm.dev>"]
 license = "MIT" 

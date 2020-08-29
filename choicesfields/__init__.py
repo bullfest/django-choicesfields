@@ -28,15 +28,15 @@ DBType = TypeVar("DBType")
 
 
 class _ChoicesField(Field, Generic[T, DBType], metaclass=ABCMeta):
-    def __init__(
-        self, *, choice_type: Type[T], choices: Iterable[Tuple[DBType, str]], **kwargs
-    ):
-        super().__init__(choices=choices, **kwargs)  #
+    def __init__(self, *, choice_type: Type[T], **kwargs):
+        assert "choices" not in kwargs
+        super().__init__(choices=choice_type.choices, **kwargs)
         self.choice_type = choice_type
 
     def deconstruct(self):
         name, path, args, kwargs = super().deconstruct()
         kwargs["choice_type"] = self.choice_type
+        del kwargs["choices"]
         return name, path, args, kwargs
 
     def to_python(self, value: Union[None, DBType, T]) -> Optional[T]:
@@ -58,9 +58,9 @@ class _ChoicesField(Field, Generic[T, DBType], metaclass=ABCMeta):
         return self.choice_type(value)
 
     def get_prep_value(self, value: Optional[T]):
-        if isinstance(value, self.choice_type):
-            value = value.value
-        return super().get_prep_value(value)
+        if not isinstance(value, self.choice_type):
+            value = self.choice_type(value)
+        return super().get_prep_value(value.value)
 
 
 IntegerChoicesT = TypeVar("IntegerChoicesT", bound=IntegerChoices)

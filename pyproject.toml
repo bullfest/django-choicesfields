@@ -3,7 +3,10 @@ name = "django-choicesfields"
 version = "0.1.0"
 description = "Django fields for modern choices"
 authors = ["Alexander Viklund <bullfest@sthlm.dev>"]
-license = "MIT"
+license = "MIT" 
+packages = [
+    {include = "choicesfields"}
+]
 
 [tool.poetry.dependencies]
 python = ">= 3.6"

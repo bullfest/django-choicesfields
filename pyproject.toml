@@ -13,7 +13,7 @@ django = ">= 3.0.0"
 pytest = "*"
 pytest-django = "*"
 mypy = "*"
-black = "^19.10b0"
+black = "^20.8b1"
 django-stubs = "^1.5.0"
 
 [build-system]

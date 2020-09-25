@@ -7,6 +7,9 @@ license = "MIT"
 packages = [
     {include = "choicesfields"}
 ]
+repository = "https://github.com/bullfest/django-choicefields"
+exclude = ["tests"]
+
 
 [tool.poetry.dependencies]
 python = ">= 3.6"
